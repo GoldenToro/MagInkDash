@@ -9,3 +9,5 @@ inkplate/calender.png
 gcal/credentials.json
 gcal/token.pickle
 config.json
+/inkplate/image_example/
+inkplate/inkplate.ino

@@ -65,12 +65,17 @@ class GcalHelper:
 
     def adjust_end_time(self, endTime, localTZ):
         # check if end time is at 00:00 of next day, if so set to max time for day before
+
+        endTime = dt.datetime.fromisoformat(endTime.replace('Z', '+00:00'))
         if endTime.hour == 0 and endTime.minute == 0 and endTime.second == 0:
-            newEndtime = localTZ.localize(
-                dt.datetime.combine(endTime.date() - dt.timedelta(days=1), dt.datetime.max.time()))
-            return newEndtime
-        else:
-            return endTime
+            newEndtime = dt.datetime.combine(endTime.date() - dt.timedelta(days=1), dt.datetime.max.time())
+            endTime = newEndtime
+
+        endTime.astimezone(localTZ)
+
+        return endTime
+
+
 
     def is_multiday(self, start, end):
         # check if event stretches across multiple days
@@ -113,11 +118,9 @@ class GcalHelper:
                 new_event['startDatetime'] = self.to_datetime(event['start'].get('dateTime'), localTZ)
 
             if event['end'].get('dateTime') is None:
-                new_event['endDatetime'] = self.adjust_end_time(self.to_datetime(event['end'].get('date'), localTZ),
-                                                               localTZ)
+                new_event['endDatetime'] = self.adjust_end_time(event['end'].get('date'), localTZ)
             else:
-                new_event['endDatetime'] = self.adjust_end_time(self.to_datetime(event['end'].get('dateTime'), localTZ),
-                                                               localTZ)
+                new_event['endDatetime'] = self.adjust_end_time(event['end'].get('dateTime'), localTZ)
 
             new_event['updatedDatetime'] = self.to_datetime(event['updated'], localTZ)
             new_event['isMultiday'] = self.is_multiday(new_event['startDatetime'], new_event['endDatetime'])
