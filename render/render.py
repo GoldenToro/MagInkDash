@@ -57,7 +57,7 @@ class RenderHelper:
         driver.get(self.htmlFile)
         sleep(1)
         driver.get_screenshot_as_file(self.currPath + '/dashboard.png')
-        driver.get_screenshot_as_file(path_to_server_image)
+        driver.save_screenshot(path_to_server_image)
         self.logger.info('Screenshot captured and saved to file.')
 
     def get_german_day(self, en):
@@ -171,7 +171,6 @@ class RenderHelper:
             calender_text += '</ol></div></div><div class="row align-items-start"><div class="col-md-12"  style="height: 1px"></div></div>'
 
 
-        print(calender_text)
         # Append the bottom and write the file
         htmlFile = open(self.currPath + '/dashboard.html', "w", encoding='utf-8')
         htmlFile.write(dashboard_template.format(
