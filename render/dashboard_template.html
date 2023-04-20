@@ -8,7 +8,8 @@
         <link rel="stylesheet" href="css/styles.css">
         <link rel="stylesheet" href="css/weather-icons.min.css">
     </head>
-    <body style="background: url('background.jpg') no-repeat center center fixed; background-size: cover;>
+    <!--<body style="">-->
+    <body style="background: url('background.jpg') no-repeat center center fixed; background-size: cover;">
         <div class="container">
             <!-- Calendar -->
             <div class="row justify-content-center">
@@ -40,7 +41,7 @@
                     </div>
                     <div class="row align-items-start ">
                         <div class="col-md-12 text-center">
-                            <h2>{current_weather_text} | {current_weather_temp}°</h2>
+                            <h2>{current_weather_text} | {current_weather_temp}&#176;C</h2>
                         </div>
                     </div>
                     <div class="row align-items-start ">
@@ -55,7 +56,7 @@
                             </div>
                             <div class="row align-items-start ">
                                 <div class="col-md-12 text-center">
-                                    <h3>Today<br />{today_weather_pop}% | {today_weather_min}-{today_weather_max}°</h3>
+                                    <h3>Today<br />{today_weather_pop}% | {today_weather_min}-{today_weather_max}&#176;C</h3>
                                 </div>
                             </div>
                         </div>
@@ -67,7 +68,7 @@
                             </div>
                             <div class="row align-items-start ">
                                 <div class="col-md-12 text-center">
-                                    <h3>{tomorrow}<br />{tomorrow_weather_pop}% | {tomorrow_weather_min}-{tomorrow_weather_max}°</h3>
+                                    <h3>{day1}<br />{tomorrow_weather_pop}% | {tomorrow_weather_min}-{tomorrow_weather_max}&#176;C</h3>
                                 </div>
                             </div>
                         </div>
@@ -79,7 +80,7 @@
                             </div>
                             <div class="row align-items-start ">
                                 <div class="col-md-12 text-center">
-                                    <h3>{dayafter}<br />{dayafter_weather_pop}% | {dayafter_weather_min}-{dayafter_weather_max}°</h3>
+                                    <h3>{day2}<br />{dayafter_weather_pop}% | {dayafter_weather_min}-{dayafter_weather_max}&#176;C</h3>
                                 </div>
                             </div>
                         </div>
@@ -92,45 +93,7 @@
                     <div class="row align-items-start ">
                         <div class="col-md-12"  style="height: 50px"></div>
                     </div>
-                    <div class="row align-items-start ">
-                        <div class="col-md-12">
-                            <h2>Today</h2>
-                            <ol class="list-unstyled">
-                                {events_today}
-                            </ol>
-                        </div>
-                    </div>
-                    <div class="row align-items-start ">
-                        <div class="col-md-12"  style="height: 10px"></div>
-                    </div>
-                    <div class="row align-items-start ">
-                        <div class="col-md-12">
-                            <h2>{tomorrow}</h2>
-                            <ol class="list-unstyled">
-                                {events_tomorrow}
-                            </ol>
-                        </div>
-                    </div>
-                    <div class="row align-items-start ">
-                        <div class="col-md-12"  style="height: 10px"></div>
-                    </div>
-                    <div class="row align-items-start ">
-                        <div class="col-md-12">
-                            <h2>{dayafter}</h2>
-                            <ol class="list-unstyled">
-                                {events_dayafter}
-                            </ol>
-                        </div>
-                    </div>
-                    <div class="row align-items-start ">
-                        <div class="col-md-12"  style="height: 10px"></div>
-                    </div>
-                    <div class="row align-items-start ">
-                        <div class="col-md-12">
-                            <h2>{topic_title}</h2>
-                            <div class="did-you-know">{topic_text}</div>
-                        </div>
-                    </div>
+                    {events}
                 </div>
             </div>
         </div>

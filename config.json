@@ -1,13 +1,14 @@
 {
-  "displayTZ": "Asia/Hong_Kong",
-  "calendars": ["primary"],
-  "numCalDaysToShow": 3,
-  "owm_api_key": "ENTER YOUR OWN API KEY HERE",
-  "lat": 22.3193,
-  "lon": 114.1694,
+  "displayTZ": "Europe/Berlin",
+  "calendars": ["primary","de.german#holiday@group.v.calendar.google.com","6tdege5f0s18kjpep5femiqmao@group.calendar.google.com","addressbook#contacts@group.v.calendar.google.com","family10108889645838948660@group.calendar.google.com"],
+  "numCalDaysToShow": 7,
+  "calender_details": ["SW Dienst"],
+  "owm_api_key": "dbd368abdae6d823fb777677835e2423",
+  "lat": 51.0423,
+  "lon": 13.7021,
   "imageWidth": 1200,
-  "imageHeight": 825,
+  "imageHeight": 820,
   "rotateAngle": 0,
-  "openai_api_key": "ENTER YOUR OWN API KEY HERE",
-  "path_to_server_image": "/var/www/html/maginkdash.png"
+  "max_lines": 14,
+  "path_to_server_image": "./inkplate/calender.png"
 }

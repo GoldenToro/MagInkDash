@@ -14,7 +14,6 @@ from datetime import datetime as dt
 from pytz import timezone
 from gcal.gcal import GcalModule
 from owm.owm import OWMModule
-from oai.oai import OAIModule
 from render.render import RenderHelper
 
 
@@ -34,9 +33,9 @@ if __name__ == '__main__':
     lat = config["lat"] # Latitude in decimal of the location to retrieve weather forecast for
     lon = config["lon"] # Longitude in decimal of the location to retrieve weather forecast for
     owm_api_key = config["owm_api_key"]  # OpenWeatherMap API key. Required to retrieve weather forecast.
-    openai_api_key = config["openai_api_key"]  # OpenAI API key. Required to retrieve response from ChatGPT
     path_to_server_image = config["path_to_server_image"]  # Location to save the generated image
-
+    calender_details = config["calender_details"]  # Entrys that should show End Time
+    max_lines = config["max_lines"]  # Entrys that should show End Time
     # Create and configure logger
     logging.basicConfig(filename="logfile.log", format='%(asctime)s %(levelname)s - %(message)s', filemode='a')
     logger = logging.getLogger('maginkdash')
@@ -56,14 +55,10 @@ if __name__ == '__main__':
     eventList = calModule.get_events(
         currDate, calendars, calStartDatetime, calEndDatetime, displayTZ, numCalDaysToShow)
 
-    # Retrieve Random Fact from OpenAI
-    oaiModule = OAIModule()
-    topic = oaiModule.get_random_fact(currDate, openai_api_key)
-
     # Render Dashboard Image
     renderService = RenderHelper(imageWidth, imageHeight, rotateAngle)
     renderService.process_inputs(currDate, current_weather, hourly_forecast, daily_forecast, eventList, numCalDaysToShow,
-                                 topic, path_to_server_image)
+                                 path_to_server_image, calender_details, max_lines)
 
     logger.info("Completed dashboard update")
 
